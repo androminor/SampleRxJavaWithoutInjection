@@ -35,7 +35,7 @@ interface UserDao {
 
      * @return the user from the table with a specific id.
      */
-    @Query("SELECT * FROM Users WHERE userid = :id")
+    @Query("SELECT * FROM user WHERE userId = :id")
     fun getUserById(id: String): Flowable<User>
 
     /**
@@ -49,6 +49,6 @@ interface UserDao {
     /**
      * Delete all users.
      */
-    @Query("DELETE FROM Users")
+    @Query("DELETE FROM user")
     fun deleteAllUsers()
 }

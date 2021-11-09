@@ -23,19 +23,19 @@
               tools:context="com.example.android.observability.ui.UserActivity">
 
     <TextView
-        android:id="@+id/user_name"
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="32sp" tools:text="Hello World!"/>
+        android:textSize="32sp" tools:text=""/>
 
     <EditText
-        android:id="@+id/user_name_input"
+        android:id="@+id/user_nameinput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/update_user_button"
+        android:id="@+id/update_userbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/update_user"/>
+        android:text="@string/updateuser"/>
 </LinearLayout>

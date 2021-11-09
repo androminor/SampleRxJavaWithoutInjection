@@ -21,9 +21,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity(tableName = "users")
+@Entity(tableName = "user")
 data class User(@PrimaryKey
-                @ColumnInfo(name = "userid")
+                @ColumnInfo(name = "userId")
                 val id: String = UUID.randomUUID().toString(),
-                @ColumnInfo(name = "username")
+                @ColumnInfo(name = "usersname")
                 val userName: String)

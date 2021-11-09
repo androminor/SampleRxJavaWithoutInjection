@@ -25,9 +25,7 @@ import com.example.android.observability.persistence.UsersDatabase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_user.update_user_button
-import kotlinx.android.synthetic.main.activity_user.user_name
-import kotlinx.android.synthetic.main.activity_user.user_name_input
+import kotlinx.android.synthetic.main.activity_user.*
 
 /**
  * Main screen of the app. Displays a user name and gives the option to update the user name.
@@ -49,7 +47,7 @@ class UserActivity : AppCompatActivity() {
         val dataSource = UsersDatabase.getInstance(application).userDao()
 
         viewModelFactory = ViewModelFactory(dataSource)
-        update_user_button.setOnClickListener{
+        update_userbutton.setOnClickListener{
             updateUserName()
         }
 
@@ -57,33 +55,27 @@ class UserActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        // Subscribe to the emissions of the user name from the view model.
-        // Update the user name text view, at every onNext emission.
-        // In case of error, log the exception.
+     //composite disposable for background thread
         disposable.add(viewModel.userName()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ this.user_name.text = it },
+            .subscribe({ this.username.text = it },
                 { error -> Log.e(TAG, "Unable to get username", error) }))
     }
 
     override fun onStop() {
         super.onStop()
-
-        // clear all the subscription
         disposable.clear()
     }
 
     private fun updateUserName() {
-        val userName = user_name_input.text.toString()
-        // Disable the update button until the user name update has been done
-        update_user_button.isEnabled = false
-        // Subscribe to updating the user name.
-        // Enable back the button once the user name has been updated
+        val userName = user_nameinput.text.toString()
+        update_userbutton.isEnabled = false
+
         disposable.add(viewModel.updateUserName(userName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ update_user_button.isEnabled = true },
+            .subscribe({ update_userbutton.isEnabled = true },
                 { error -> Log.e(TAG, "Unable to update username", error) }))
     }
 

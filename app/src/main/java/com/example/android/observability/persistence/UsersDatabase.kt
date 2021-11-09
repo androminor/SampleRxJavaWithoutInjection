@@ -21,10 +21,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import android.content.Context
 
-/**
- * The Room database that contains the Users table
- */
-@Database(entities = [User::class], version = 1)
+
+@Database(entities = [User::class], version = 2)
 abstract class UsersDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao

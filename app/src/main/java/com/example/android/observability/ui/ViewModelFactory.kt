@@ -20,9 +20,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.observability.persistence.UserDao
 
-/**
- * Factory for ViewModels
- */
+
 class ViewModelFactory(private val dataSource: UserDao) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
